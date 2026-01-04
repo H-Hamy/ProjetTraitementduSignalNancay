@@ -27,7 +27,35 @@ Le travail est découpé en 4 livrables successifs qui permettent de :
 ### Livrable 1 – Vulgarisation scientifique et première analyse
 
 - Expliquer, de façon vulgarisée, comment on passe d’une onde électromagnétique dans l’espace à un signal audio que l’on peut écouter.
-- Décrire la chaîne d’acquisition du signal (onde EM → antenne → amplification → conversion analogique/numérique → traitement numérique → transposition de fréquence → conversion numérique/analogique → son).
+- Décrire la chaîne d’acquisition du signal :
+```mermaid
+flowchart TD
+
+    classDef bloc fill:#1f77b4,stroke:#0b3b73,color:#ffffff,stroke-width:2px,rx:10,ry:10;
+    classDef final fill:#ff7f0e,stroke:#b35000,color:#ffffff,stroke-width:2px,rx:10,ry:10;
+    classDef titre fill:#ffffff,stroke-width:0px,color:#000000;
+
+    T["Chaîne d'acquisition du signal"]:::titre
+
+    A["Source : Espace"]:::bloc
+    B["Onde électromagnétique<br/>(21 cm)"]:::bloc
+    C["Radiotélescope"]:::bloc
+    D["Signal électrique analogique"]:::bloc
+    E["Amplificateur LNA"]:::bloc
+    F["Signal Haute Fréquence (HF)"]:::bloc
+    G["Mélangeur / Transposition<br/>de fréquence"]:::bloc
+    H["Signal Basse Fréquence (Audio)"]:::bloc
+    I["Filtre analogique"]:::bloc
+    J["Signal nettoyé"]:::bloc
+    K["Convertisseur Analogique‑<br/>Numérique (CAN)"]:::bloc
+    L["Signal numérique (0 et 1)"]:::bloc
+    M["Filtre numérique"]:::bloc
+    N["Fichier audio (.wav)"]:::bloc
+    O["Ordinateur"]:::final
+
+    T --> A
+    A --> B --> C --> D --> E --> F --> G --> H --> I --> J --> K --> L --> M --> N --> O
+```
 - Préciser la nature du signal à chaque étape (EM, RF, analogique, numérique, audio).
 - Introduire les notions clés :
   - raie 21 cm de l’hydrogène neutre (longueur d’onde ≈ 21 cm, fréquence ≈ 1420 MHz) ;
@@ -69,15 +97,16 @@ Organisation prévue du dépôt :
 
 ```text
 Projet-Traitement-du-Signal-Nancay/
-├── README.md                  # Présentation générale du projet
+├── README.md                      # Présentation générale du projet
 ├── livrable_1/
-│   └── Livrable_1.ipynb       # Vulgarisation + première analyse du signal
+│   └── Livrable_1.ipynb           # Vulgarisation + première analyse du signal
+│   └── signal_recu_transpose.wav
 ├── livrable_2/
-│   └── Livrable_2.ipynb       # Filtre analogique
+│   └── Livrable_2.ipynb           # Filtre analogique
 ├── livrable_3/
-│   └── Livrable_3.ipynb       # Chaîne de réception numérique
-└── livrable_4/
-    └── Livrable_4.ipynb       # Chaîne de transmission complète
+│   └── Livrable_3.ipynb           # Chaîne de réception numérique
+└── livrable_4/  
+    └── Livrable_4.ipynb           # Chaîne de transmission complète
 ```
 
 Le fichier audio fourni (signal_recu_transpose.wav) peut être placé dans le dossier livrable_1/ (ou dans un sous‑dossier data/), selon les consignes du bloc.
